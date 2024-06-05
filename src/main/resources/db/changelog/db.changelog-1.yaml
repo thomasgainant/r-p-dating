@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Thomas Gainant <thomas@twothirds.fr>
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: score
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: gender
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: Thomas Gainant <thomas@twothirds.fr>
+      changes:
+        - loadData:
+            file: classpath:db/data/users.csv
+            tableName: users
+            separator: ","
+            columns:
+              - column:
+                  name: email
+                  type: STRING
+              - column:
+                  name: password
+                  type: STRING
+              - column:
+                  name: score
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: STRING
+              - column:
+                  name: gender
+                  type: STRING
