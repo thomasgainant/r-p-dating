@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Thomas Gainant <thomas@twothirds.fr>
+      changes:
+        - createTable:
+            tableName: pairs
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: owner_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_pair_owner
+                    references: users(id)
+              - column:
+                  name: a_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_pair_a
+                    references: users(id)
+              - column:
+                  name: b_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_pair_b
+                    references: users(id)
+              - column:
+                  name: iteration
+                  type: INT
+              - column:
+                  name: created
+                  type: DATE
+  - changeSet:
+      id: 4
+      author: Thomas Gainant <thomas@twothirds.fr>
+      changes:
+        - createTable:
+            tableName: interactions
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: owner_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_interaction_owner
+                    references: users(id)
+              - column:
+                  name: target_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_interaction_target
+                    references: users(id)
+              - column:
+                    name: type
+                    type: VARCHAR(255)
+                    constraints:
+                      nullable: false
+              - column:
+                  name: pair_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_interaction_pair
+                    references: pairs(id)
+                    nullable: true
+              - column:
+                  name: created
+                  type: DATE

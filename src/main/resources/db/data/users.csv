@@ -1,5 +1,5 @@
 email,password,score,name,gender
-user1@example.com,password1,0,Newbie,M
+user1@example.com,password1,10,Newbie,M
 user2@example.com,password2,-30,Josh,M
 user3@example.com,password3,100,Stacy,F
 user4@example.com,password4,10,Alex,M

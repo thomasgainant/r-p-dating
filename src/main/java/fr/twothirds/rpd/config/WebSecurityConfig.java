@@ -29,6 +29,10 @@ public class WebSecurityConfig {
             .requestMatchers(
                 new AntPathRequestMatcher("/h2-console/**")
             ).permitAll()
+            //TODO unmock
+            .requestMatchers(
+                new AntPathRequestMatcher("/api/**")
+            ).permitAll()
             .anyRequest().authenticated()
         );
 
